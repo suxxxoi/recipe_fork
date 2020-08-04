@@ -1,0 +1,12 @@
+<h1> {{ recipe.title }} </h1>
+{% for ingredientlist in recipe.ingredientlist_set.all %}
+<h3> {{ ingredientlist.ingredient_list_title }} </h3>
+	{% for ingredient in ingredientlist.ingredient_set.all %}
+		{{ ingredient.name }}
+		{{ ingredient.amount }}
+		{{ ingredient.unit }}
+		<br>
+	{% endfor %}
+{% endfor %}
+<h2> Rezept: </h2>
+{{ recipe.recipe_text }}
