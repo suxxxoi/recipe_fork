@@ -1,0 +1,25 @@
+<h1> New Recipe </h1>
+
+<form action="{% url 'recipe:new' %}" method="post">
+{% csrf_token %}
+	<label for="title">Rezepttitel:</labe>
+	<input type ="text" name="title">
+	<br>
+	<label for="recipe_text">Zubereitung:</label><br>
+	<textarea name="recipe_text" rows=10" cols="50">
+	</textarea>
+	<br>
+	<input type="submit" value="New">
+	<br>
+	{% for i in '01'|make_list %}
+		<input type ="text" name="ingredient_list_{{ forloop.counter }}"
+			value="Zutatenliste {{forloop.counter}}">
+		<br>
+		{% for j in '0123456789'|make_list %}
+			<input type ="text" name="ingredient_name_{{i}}_{{j}}" size=20>
+			<input type ="text" name="ingredient_amount_{{i}}_{{j}}" size=3>
+			<input type ="text" name="ingredient_unit_{{i}}_{{j}}" size=3>
+			<br>
+		{% endfor %}
+	{% endfor %}
+</form>
