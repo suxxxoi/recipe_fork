@@ -5,6 +5,7 @@ class Recipe(models.Model):
     title = models.CharField(max_length=200, default='Title')
     recipe_text = models.TextField()
     description = models.TextField(default='')
+    portions = models.FloatField(default=1)
 
     def __str__(self):
         return self.recipe_text

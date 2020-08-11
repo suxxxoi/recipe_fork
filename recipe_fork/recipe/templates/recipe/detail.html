@@ -1,5 +1,6 @@
 <h1> {{ recipe.title }} </h1>
-{{ recipe.description }}
+{{ recipe.description }} <br>
+{{ recipe.portions }} Portionen
 {% for ingredientlist in recipe.ingredientlist_set.all %}
 <h3> {{ ingredientlist.ingredient_list_title }} </h3>
 	{% for ingredient in ingredientlist.ingredient_set.all %}

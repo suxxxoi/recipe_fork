@@ -29,7 +29,8 @@ def save_new_recipe(request):
     new_r = Recipe(
         title=request.POST['title'],
         recipe_text=request.POST['recipe_text'],
-        description = request.POST['description_text'],
+        description=request.POST['description_text'],
+        portions=float(request.POST['portions']),
         )
     new_r.save()
     ingredient_list_titles = [name for name in request.POST.keys() if name.startswith('ingredient_list_')]
