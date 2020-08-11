@@ -1,9 +1,13 @@
 <h1> New Recipe </h1>
 
-<form action="{% url 'recipe:new' %}" method="post">
+<form action="{% url 'recipe:save_new' %}" method="post">
 {% csrf_token %}
 	<label for="title">Rezepttitel:</labe>
 	<input type ="text" name="title">
+	<br>
+	<label for="description">Beschreibung:</label><br>
+	<textarea name="description_text" rows=10" cols="50">
+	</textarea>
 	<br>
 	<label for="recipe_text">Zubereitung:</label><br>
 	<textarea name="recipe_text" rows=10" cols="50">
