@@ -1,14 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
 <h1> {{ recipe.title }} </h1>
 {{ recipe.description }} <br>
 {{ recipe.portions }} Portionen
 {% for ingredientlist in recipe.ingredientlist_set.all %}
 <h3> {{ ingredientlist.ingredient_list_title }} </h3>
 	{% for ingredient in ingredientlist.ingredient_set.all %}
-		{{ ingredient.name }}
-		{{ ingredient.amount }}
-		{{ ingredient.unit }}
-		<br>
+		<div class="row justify-content-start">
+			<div class="col-md-auto">{{ ingredient.amount }}</div>
+			<div class="col-md-auto">{{ ingredient.unit }}</div>
+			<div class="col-md-auto">{{ ingredient.name }}</div>
+			<div class="col"></div>
+		</div>
 	{% endfor %}
 {% endfor %}
 <h2> Rezept: </h2>
 {{ recipe.recipe_text }}
+{% endblock %}
