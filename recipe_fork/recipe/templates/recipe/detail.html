@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="bg-dark text-light text-center"><h1> {{ recipe.title }} </h1></div>
-<div class="bg-light w-50">{{ recipe.description }}</div> 
+<div class="bg-light w-50">{{ recipe.description|linebreaksbr }}</div> 
 {{ recipe.portions }} Portionen
 <div class="row">
 	<div class="col-md-6">
@@ -27,7 +27,7 @@
 	</div>
 	<div class="col-md-6 w-50">
 		<h2> Zubereitung: </h2>
-		{{ recipe.recipe_text }}
+		{{ recipe.recipe_text|linebreaksbr }}
 	</div>
 </div>
 {% endblock %}

@@ -25,7 +25,6 @@ def new_recipe(request):
 
 
 def save_new_recipe(request):
-    print(request)
     new_r = Recipe(
         title=request.POST['title'],
         recipe_text=request.POST['recipe_text'],
