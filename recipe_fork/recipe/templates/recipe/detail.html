@@ -1,19 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-<h1> {{ recipe.title }} </h1>
-{{ recipe.description }} <br>
+<div class="bg-dark text-light text-center"><h1> {{ recipe.title }} </h1></div>
+<div class="bg-light w-50">{{ recipe.description }}</div> 
 {{ recipe.portions }} Portionen
-{% for ingredientlist in recipe.ingredientlist_set.all %}
-<h3> {{ ingredientlist.ingredient_list_title }} </h3>
-	{% for ingredient in ingredientlist.ingredient_set.all %}
-		<div class="row justify-content-start">
-			<div class="col-md-auto">{{ ingredient.amount }}</div>
-			<div class="col-md-auto">{{ ingredient.unit }}</div>
-			<div class="col-md-auto">{{ ingredient.name }}</div>
-			<div class="col"></div>
+<div class="row">
+	<div class="col-md-6">
+	{% for ingredientlist in recipe.ingredientlist_set.all %}
+	<h3> {{ ingredientlist.ingredient_list_title }} </h3>
+		<div>
+		<table style="width: auto;" class="table table-bordered">
+			<tr>
+				<th>Menge</th>
+				<th>Einheit</th>
+				<th>Zutat</th>
+			<tr>
+			{% for ingredient in ingredientlist.ingredient_set.all %}
+				<tr>
+					<td>{{ ingredient.amount }}</td>
+					<td>{{ ingredient.unit }}</td>
+					<td>{{ ingredient.name }}</td>
+				</tr>
+			{% endfor %}
+		</table>
 		</div>
 	{% endfor %}
-{% endfor %}
-<h2> Rezept: </h2>
-{{ recipe.recipe_text }}
+	</div>
+	<div class="col-md-6 w-50">
+		<h2> Zubereitung: </h2>
+		{{ recipe.recipe_text }}
+	</div>
+</div>
 {% endblock %}
