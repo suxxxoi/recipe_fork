@@ -4,6 +4,7 @@ from django.views import generic
 from django.urls import reverse
 
 from .models import Recipe, IngredientList, Ingredient
+from django.contrib.auth.models import User
 
 
 def index(request):
@@ -20,12 +21,14 @@ class DetailView(generic.DetailView):
     # return render(recipe, 'recipe/detail.html', {'recipe': recipe})
 
 
-def new_recipe(request):
-    return render(request, 'recipe/new.html')
+def new_recipe(request, user_pk):
+    context = {'user_pk': user_pk}
+    return render(request, 'recipe/new.html', context)
 
 
 def save_new_recipe(request):
     new_r = Recipe(
+        author=User(pk=request.POST['user_pk']),
         title=request.POST['title'],
         recipe_text=request.POST['recipe_text'],
         description=request.POST['description_text'],

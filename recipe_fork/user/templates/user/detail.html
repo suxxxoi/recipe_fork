@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+	<div class='col'><h1>{{ user.username }}</h1></div>
+	<div class='col'>
+		{% for recipe in user.recipe_set.all %}
+		<div> <a href="{% url 'recipe:recipe' recipe.id%}">{{ recipe.title }}</a></div>
+		{% endfor %}
+	</div>
+	<div class='col'> <a href="{% url 'user:recipe:new' user.id%}">Neues Rezept</a> </div>
+</div>
+{% endblock %}
