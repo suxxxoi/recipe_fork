@@ -22,7 +22,9 @@ class DetailView(generic.DetailView):
 
 
 def new_recipe(request, user_pk):
-    context = {'user_pk': user_pk}
+    username = User.objects.get(pk=user_pk).username
+    context = {'user_pk': user_pk,
+               'user_name': username}
     return render(request, 'recipe/new.html', context)
 
 

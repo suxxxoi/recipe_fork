@@ -1,6 +1,6 @@
 <h1> New Recipe </h1>
 
-{{ user_pk }}
+{{ user_name }}
 <form action="{% url 'recipe:save_new' %}" method="post">
 {% csrf_token %}
 	<input name="user_pk" type="hidden" value="{{user_pk}}">
